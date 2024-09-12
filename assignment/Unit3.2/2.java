@@ -2,18 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public List<Integer> inorderTraversal(TreeNode root) {
+    public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
-        inorder(root, result);
+        preorder(root, result);
         return result;
     }
 
-    private void inorder(TreeNode node, List<Integer> result) {
+    private void preorder(TreeNode node, List<Integer> result) {
         if (node == null) {
             return;
         }
         result.add(node.val);
-        inorder(node.left, result);
-        inorder(node.right, result);
+        preorder(node.left, result);
+        preorder(node.right, result);
     }
 }

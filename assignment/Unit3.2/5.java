@@ -21,7 +21,6 @@ class Solution {
             }
             result.add(level);
         }
-
         return result;
     }
 }
