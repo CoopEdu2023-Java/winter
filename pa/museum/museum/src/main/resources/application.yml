@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: msa-museum
+  datasource:
+    url: jdbc:mysql://localhost:3306/demodb
+    username: root
+    password: a2c4e6g8
+  jpa:
+    hibernate:
+      ddl-auto: update

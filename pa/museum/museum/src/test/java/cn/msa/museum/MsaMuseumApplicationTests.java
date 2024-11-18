@@ -1,10 +1,10 @@
-package com.example.demo;
+package cn.msa.museum;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class MsaMuseumApplicationTests {
 
 	@Test
 	void contextLoads() {
