@@ -12,11 +12,15 @@ public class UserService {
     @Autowired
     private UserRepository UserRepository;
 
-    public boolean login(UserEntity user) {
-        return UserRepository.existsByUsernameAndPassword(user.getUsername(), user.getPassword());
+    @Autowired
+    private JwtService jwtService;
+
+    public String login(UserEntity userEntity) {
+        UserEntity user = UserRepository.findByUsernameAndPassword(userEntity.getUsername(), userEntity.getPassword());
+        return jwtService.setToken(user);
     }
 
-    public void register(UserEntity user) {
-        UserRepository.save(user);
+    public void register(UserEntity userEntity) {
+        UserRepository.save(userEntity);
     }
 }

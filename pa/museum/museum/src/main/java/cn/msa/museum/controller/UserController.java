@@ -17,13 +17,13 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/login")
-    public void login(@RequestBody UserEntity user) {
-        userService.login(user);
+    public String login(@RequestBody UserEntity userEntity) {
+        return userService.login(userEntity);
     }
 
     @PostMapping("/register")
-    public void register(@RequestBody UserEntity user) {
-        userService.register(user);
+    public void register(@RequestBody UserEntity userEntity) {
+        userService.register(userEntity);
     }
 
 }
