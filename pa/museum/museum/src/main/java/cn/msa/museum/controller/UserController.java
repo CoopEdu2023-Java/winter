@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.msa.museum.entity.UserEntity;
+import cn.msa.museum.dto.LoginDto;
+import cn.msa.museum.dto.RegisterDto;
+import cn.msa.museum.dto.ResponseDto;
+import cn.msa.museum.exception.BusinessException;
+import cn.msa.museum.exception.ExceptionEnum;
 import cn.msa.museum.service.UserService;
 
 @RestController
@@ -17,13 +21,21 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/login")
-    public String login(@RequestBody UserEntity userEntity) {
-        return userService.login(userEntity);
+    public ResponseDto<String> login(@RequestBody LoginDto loginDto) {
+        if (loginDto.getUsername() == null || loginDto.getPassword() == null) {
+            throw new BusinessException(ExceptionEnum.MISSING_PARAMETERS);
+        }
+
+        String token = userService.login(loginDto);
+        return new ResponseDto<>(token);
     }
 
     @PostMapping("/register")
-    public void register(@RequestBody UserEntity userEntity) {
-        userService.register(userEntity);
+    public void register(@RequestBody RegisterDto registerDto) {
+        if (registerDto.getUsername() == null || registerDto.getPassword() == null) {
+            throw new BusinessException(ExceptionEnum.MISSING_PARAMETERS);
+        }
+        userService.register(registerDto);
     }
 
 }
