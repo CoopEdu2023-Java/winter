@@ -31,11 +31,12 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public void register(@RequestBody RegisterDto registerDto) {
+    public ResponseDto<Void> register(@RequestBody RegisterDto registerDto) {
         if (registerDto.getUsername() == null || registerDto.getPassword() == null) {
             throw new BusinessException(ExceptionEnum.MISSING_PARAMETERS);
         }
         userService.register(registerDto);
+        return new ResponseDto<>();
     }
 
 }
