@@ -1,7 +1,7 @@
 import java.io.File;
 import java.io.FileFilter;
 
-public class FileDemo {
+class FileDemo {
     public static void main(String[] args) {
         File dir = new File("./");
         if (dir.isDirectory()) {

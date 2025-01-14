@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class assignment3 {
+class Meow {
     public static void main(String[] args) throws InterruptedException {
         List<Integer> arr = new ArrayList<>(Arrays.asList(5, 1, 2, 4, 3));
         arr = sleepSort(arr);
